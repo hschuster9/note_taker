@@ -54,13 +54,11 @@ app.delete('/api/notes/:title', function(req, res){
 
 //update note
 app.put("/api/notes/:title", function(req, res){
+  console.log(req.body);
   Note.findOneAndUpdate({title: req.params.title}, req.body, {new: true}).then(function(note){
     res.json(note)
   })
 })
-
-
-
 
 app.listen(app.get("port"), function(){
   console.log("It's aliiive!");
