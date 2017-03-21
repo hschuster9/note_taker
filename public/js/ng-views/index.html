@@ -1,6 +1,5 @@
 <h3>All Notes</h3>
-<div class="notes">
-<h4 ng-repeat= "note in vm.notes">
-  <a data-ui-sref="show({title: note.title})">{{note.title}}</a>
-</h4>
+<div class="well well-sm" ng-repeat= "note in vm.notes">
+<h4><a data-ui-sref="show({title: note.title})">{{note.title}}</a></h4>
 </div>
+<button type="button" class="btn btn-primary" data-ui-sref="new">New Note</button>
