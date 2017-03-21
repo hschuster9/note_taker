@@ -23,10 +23,37 @@ angular
     NoteShowControllerFunction
   ])
 
-  function Router($stateProvider){
+  function RouterFunction($stateProvider){
     $stateProvider
     .state("welcome", {
       url: "/",
       templateUrl: "/assets/js/ng-views/welcome.html"
     })
+    .state("index", {
+      url: "/notes",
+      templateUrl: "/assets/js/ng-views/index.html",
+      controller: "NoteIndexController",
+      controllerAs: "vm"
+    })
+    .state("show", {
+      url: "/notes/:title",
+      templateUrl: "/assets/js/ng-views/show.html",
+      controller: "NoteShowController",
+      controllerAs: "vm"
+    })
+  }
+
+  function NoteFactoryFunction( $resource){
+    return $resouse("/api/notes/:title", {}, {
+      update: {method: "PUT"}
+    })
+  }
+
+  function NoteIndexControllerFunction( NoteFactory, $state){
+    this.notes = NoteFactory.query()
+
+  }
+
+  function NoteShowControllerFunction( NoteFactory, $state, $stateParams){
+    
   }
