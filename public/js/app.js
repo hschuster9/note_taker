@@ -72,7 +72,6 @@ angular
     })
 }
 }
-
   function NoteShowControllerFunction( NoteFactory, $state, $stateParams){
     this.note = NoteFactory.get({ title: $stateParams.title})
     this.update = function(){
