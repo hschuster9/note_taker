@@ -1,2 +1,8 @@
 <h4>{{vm.note.title}}</h4>
 <h5>{{vm.note.body}}</h5>
+
+<form data-ng-submit="vm.update()">
+<input type="text" data-ng-model="vm.note.title" placeholder="Note Title">
+<input type="text" data-ng-model="vm.note.body" placeholder="Note Body">
+<button type="submit">Update</button>
+</form>
