@@ -26,4 +26,20 @@ app.get('/', function(req, res){
   res.render("notes")
 })
 
-app.get()
+app.get("/api/notes", function(req, res){
+  Note.find({}).then(function(notes){
+    res.json(notes)
+  });
+});
+
+
+
+
+
+
+
+
+
+app.listen(app.get("port"), function(){
+  console.log("It's aliiive!");
+});
