@@ -80,4 +80,9 @@ angular
         $state.go("index")
       })
     }
+    this.destroy = function(){
+      this.note.$delete({ title: $stateParams.title}).then(function(){
+        $state.go("index")
+      })
+    }
   }
