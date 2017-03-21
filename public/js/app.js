@@ -67,14 +67,10 @@ angular
   function NoteNewControllerFunction( NoteFactory, $state){
     this.note = new NoteFactory()
     this.create = function(){
-      this.note.$save().then(function(note){
+      this.note.$save(function(note){
         $state.go("show", {title: note.title})
     })
 }
-}
-
-function NoteShowControllerFunction( NoteFactory, $state, $stateParams){
-  this.note = NoteFactory.get({ title: $stateParams.title})
 }
 
   function NoteShowControllerFunction( NoteFactory, $state, $stateParams){
