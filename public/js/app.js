@@ -16,6 +16,11 @@ angular
     "$state",
     NoteIndexControllerFunction
   ])
+  .controller('NoteNewController', [
+    "NoteFactory",
+    "$state",
+    NoteNewControllerFunction
+  ])
   .controller('NoteShowController', [
     "NoteFactory",
     "$state",
@@ -36,7 +41,7 @@ angular
       controllerAs: "vm"
     })
     .state("show", {
-      url: "/:title",
+      url: "/notes/:title",
       templateUrl: "/assets/js/ng-views/show.html",
       controller: "NoteShowController",
       controllerAs: "vm"
@@ -49,11 +54,18 @@ angular
     })
   }
 
-  function NoteIndexControllerFunction( NoteFactory, $state){
+  function NoteIndexControllerFunction(NoteFactory, $state){
     this.notes = NoteFactory.query()
-
   }
 
+  function NoteNewControllerFunction( NoteFactory, $state){
+    this.newNote = new NoteFactory()
+    this.create = function(){
+      this.newNote.$save().then(function(note){
+        $state.go("show", {title: note.title})
+    })
+}
   function NoteShowControllerFunction( NoteFactory, $state, $stateParams){
     this.note = NoteFactory.get({ title: $stateParams.title})
   }
+}
