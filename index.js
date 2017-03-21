@@ -20,8 +20,15 @@ app.use("/assets", express.static("public"))
 app.use(parser.urlencoded({extended: true}))
 
 app.get('/', function(req, res){
-  console.log("CONNECTED")
+  res.render("notes")
 })
+
+app.get("/api/notes", function(req, res){
+  Note.find({}).then(function(notes){
+    res.json(notes)
+  });
+});
+
 
 
 app.listen(app.get("port"), function(){
