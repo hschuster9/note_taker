@@ -17,17 +17,48 @@ app.engine(".hbs", hbs({
 }))
 
 app.use("/assets", express.static("public"))
-app.use(parser.urlencoded({extended: true}))
+app.use(parser.json({extended: true}))
 
+//root url
 app.get('/', function(req, res){
   res.render("notes")
 })
 
+//show all notes
 app.get("/api/notes", function(req, res){
   Note.find({}).then(function(notes){
     res.json(notes)
-  });
-});
+  })
+})
+
+//show individual note
+app.get('/api/notes/:title', function(req, res){
+  Note.findOne({title: req.params.title}).then(function(note){
+    res.json(note)
+  })
+})
+
+//create note
+app.post('/api/notes', function(req, res){
+  Note.create(req.body).then(function(note){
+    res.json(note)
+  })
+})
+
+//delete note
+app.delete('/api/notes/:title', function(req, res){
+  Note.findOneAndRemove({title: req.params.title}).then(function(){
+    res.json({success: true})
+  })
+})
+
+//update note
+app.put("/api/notes/:title", function(req, res){
+  Note.findOneAndUpdate({title: req.params.title}, req.body, {new: true}).then(function(note){
+    res.json(note)
+  })
+})
+
 
 
 
