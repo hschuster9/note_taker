@@ -36,7 +36,7 @@ angular
       controllerAs: "vm"
     })
     .state("show", {
-      url: "/:title",
+      url: "/notes/:title",
       templateUrl: "/assets/js/ng-views/show.html",
       controller: "NoteShowController",
       controllerAs: "vm"
