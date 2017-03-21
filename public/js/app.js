@@ -44,7 +44,7 @@ angular
   }
 
   function NoteFactoryFunction( $resource){
-    return $resouse("/api/notes/:title", {}, {
+    return $resource("/api/notes/:title", {}, {
       update: {method: "PUT"}
     })
   }
@@ -55,5 +55,5 @@ angular
   }
 
   function NoteShowControllerFunction( NoteFactory, $state, $stateParams){
-    
+
   }
