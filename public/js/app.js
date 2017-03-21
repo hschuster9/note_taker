@@ -40,6 +40,12 @@ angular
       controller: "NoteIndexController",
       controllerAs: "vm"
     })
+    .state("new", {
+      url: "/notes/new",
+      templateUrl: "/assets/js/ng-views/new.html",
+      controller: "NoteNewController",
+      controllerAs: "vm"
+    })
     .state("show", {
       url: "/notes/:title",
       templateUrl: "/assets/js/ng-views/show.html",
@@ -59,13 +65,18 @@ angular
   }
 
   function NoteNewControllerFunction( NoteFactory, $state){
-    this.newNote = new NoteFactory()
+    this.note = new NoteFactory()
     this.create = function(){
-      this.newNote.$save().then(function(note){
+      this.note.$save().then(function(note){
         $state.go("show", {title: note.title})
     })
 }
+}
   function NoteShowControllerFunction( NoteFactory, $state, $stateParams){
     this.note = NoteFactory.get({ title: $stateParams.title})
+    this.update = function(){
+      this.note.$update({ title: $stateParams.title}).then(function(){
+        $state.go("index")
+      })
+    }
   }
-}
