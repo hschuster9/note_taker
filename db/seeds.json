@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Build a MEAN App",
+    "body":  "Initialize npm, install express, install mongoose, install handlebar, create database, create views and controllers"
+  },
+
+  {
+    "title": "Job Searching Skills",
+    "body": "Mock interviews, network, resume, portfolio"
+  },
+
+  {
+    "title": "Vacation Planning",
+    "body": "Choose a destination, book flights and hotel, research and book activities"
+  }
+
+]
