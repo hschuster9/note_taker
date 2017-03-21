@@ -36,7 +36,7 @@ angular
       controllerAs: "vm"
     })
     .state("show", {
-      url: "/notes/:title",
+      url: "/:title",
       templateUrl: "/assets/js/ng-views/show.html",
       controller: "NoteShowController",
       controllerAs: "vm"
@@ -55,5 +55,5 @@ angular
   }
 
   function NoteShowControllerFunction( NoteFactory, $state, $stateParams){
-
+    this.note = NoteFactory.get({ title: $stateParams.title})
   }
