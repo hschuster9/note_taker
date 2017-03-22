@@ -1,7 +1,9 @@
 <h4>{{vm.note.title}}</h4>
 <h5>{{vm.note.body}}</h5>
 
-<form data-ng-show="showEditForm" data-ng-show="showEditButton" data-ng-submit="vm.update()">
+
+
+<form data-ng-show="showEditForm" data-ng-submit="vm.update()">
   <div class="form-group">
 <input class="form-control" type="text" data-ng-model="vm.note.title" placeholder="Note Title">
 </div>
@@ -11,4 +13,6 @@
 <button class="btn btn-warning" type="submit">Update</button>
 <button class="btn btn-danger" data-ng-click="vm.destroy()" type="submit">Delete</button>
 </form>
-<button class="btn btn-warning" data-ng-click="showEditForm = ! showEditForm" data-ng-click="showEditForm = ! showEditButton">Edit</button>
+
+
+<button class="btn btn-warning" ng-click="showDiv=true; showEditForm = ! showEditForm" ng-show="!showDiv"  >Edit</button>
